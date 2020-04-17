@@ -1,6 +1,7 @@
 <template lang="pug">
 #home
-	| home
+	Button home
+	Switcher
 </template>
 
 <script>
