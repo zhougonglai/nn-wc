@@ -13,10 +13,10 @@
   aside
     ul.sidebar
       li(v-for="(sidebar, i) in sidebars" :key="i")
-        details(:open="sidebar.open")
-          summary
-            Arrow
-            | {{sidebar.group}}
+        details.group(:open="sidebar.open")
+          summary.group-title
+            Arrow(:class="sidebar.open")
+            small.group-label {{sidebar.group}}
           ul.navs
             li.nav(v-for="(nav, $i) in sidebar.child" :key="`${i}-${$i}`")
               router-link(:to="{name: nav.name}" v-text="nav.label")
@@ -200,18 +200,30 @@ export default {
       li
         margin 1rem 0
         details
+          &[open]
+            svg
+              transform rotate(90deg)
           summary
             cursor pointer
             outline 0
             &::-webkit-details-marker
               display none
+            svg
+              margin-right: 10px
+              transition transform 0.2s linear
+              transform rotate(0deg)
+            small
+              font-size 14px
+              font-weight 400
+              line-height 1.5
           ul.navs
             user-select none
-            padding-left 20px
+            padding-left 10px
+            margin-left 7px
             border-left 1px solid var(--nn-FG-HALF)
             li.nav
               margin 16px 0
   main
-    padding-top 72px
+    padding-top calc(72px + 3.25rem)
     margin-left 250px
 </style>
