@@ -20,7 +20,7 @@ export default {
   cursor: pointer
   .bar
     height 5px
-    background var(--nn-FG-0)
+    background var(--nn-BG-0)
     border-radius: 5px
     margin: 3px 0px
     transform-origin: left

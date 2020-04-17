@@ -17,8 +17,8 @@
           summary
             Arrow
             | {{sidebar.group}}
-          ul
-            li(v-for="(nav, $i) in sidebar.child" :key="`${i}-${$i}`")
+          ul.navs
+            li.nav(v-for="(nav, $i) in sidebar.child" :key="`${i}-${$i}`")
               router-link(:to="{name: nav.name}" v-text="nav.label")
   main
     router-view
@@ -146,7 +146,7 @@ export default {
     justify-content space-between
     z-index 99
     box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
-    background-color transparent
+    background-color var(--nn-FG-0)
     backdrop-filter blur(5px)
     .draw
       height 100%
@@ -173,6 +173,7 @@ export default {
             position relative
             display block
             text-align center
+            color var(--nn-BG-0)
             padding 0 12px
             &::before
               content ''
@@ -182,7 +183,7 @@ export default {
               right 0
               height 0
               width 100%
-              background-color var(--nn-FG-0)
+              background-color var(--nn-BG-0)
               transition height 0.2s linear
             &.router-link-exact-active::before
               height 4px
@@ -201,8 +202,15 @@ export default {
         details
           summary
             cursor pointer
+            outline 0
             &::-webkit-details-marker
               display none
+          ul.navs
+            user-select none
+            padding-left 20px
+            border-left 1px solid var(--nn-FG-HALF)
+            li.nav
+              margin 16px 0
   main
     padding-top 72px
     margin-left 250px
