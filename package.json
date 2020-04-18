@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "npm run build:wc",
+		"build": "npm run build:web",
 		"build:web": "vue-cli-service build",
 		"build:wc": "vue-cli-service build --modern --target wc-async --name nn 'src/components/*.vue'",
 		"test:unit": "vue-cli-service test:unit",
