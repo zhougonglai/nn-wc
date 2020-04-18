@@ -1,3 +1,5 @@
+const isDev = () => process.env.NODE_ENV === 'production';
+
 module.exports = {
 	devServer: {
 		port: 3333,
@@ -7,6 +9,7 @@ module.exports = {
 			libraryExport: 'default',
 		},
 	},
+	css: { extract: !isDev() },
 	chainWebpack: config => {
 		const svgRule = config.module.rule('svg');
 
