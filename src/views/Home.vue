@@ -1,16 +1,13 @@
 <template lang="pug">
 #home
 	Button home
-	Switcher
 </template>
 
 <script>
-export default {
-	name: 'Home',
-};
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class Home extends Vue {}
 </script>
 
-<style lang="stylus" scoped>
-#home
-	min-height 100vh
-</style>
+<style lang="stylus" scoped></style>

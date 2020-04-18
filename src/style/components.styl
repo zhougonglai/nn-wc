@@ -1,5 +1,9 @@
 ul.sibling-fade
-  transition opacity 0.2s
+  transition color 0.2s
+  li
+    a
+      color var(--nn-FG)
   &:hover
     li:not(:hover)
-      opacity 0.5
+      a
+        color var(--nn-FG-2)

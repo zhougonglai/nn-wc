@@ -39,6 +39,7 @@ button.nn-btn
 	background-color transparent
 	outline 0
 	border none
+	color var(--nn-FG-0)
 	line-height 40px
 	font-size large
 	min-width 200px
@@ -48,6 +49,9 @@ button.nn-btn
 	overflow hidden
 	text-direction none
 	letter-spacing 2px
+	cursor pointer
+	&:hover
+		background-color var(--nn-FG-3)
 	span
 		position absolute
 		background var(--nn-FG-2)

@@ -18,11 +18,21 @@ const routes: Array<RouteConfig> = [
 				name: 'Home',
 				component: Home,
 			},
+		],
+	},
+	{
+		path: '/about',
+		meta: {
+			keepAlive: true,
+		},
+		component: () =>
+			import(/* webpackChunkName: "layout.about" */ '@/layout/about.vue'),
+		children: [
 			{
-				path: 'about',
+				path: '',
 				name: 'About',
 				component: () =>
-					import(/* webpackChunkName: "about" */ '../views/About.vue'),
+					import(/* webpackChunkName: "page.about" */ '@/views/About.vue'),
 			},
 		],
 	},
