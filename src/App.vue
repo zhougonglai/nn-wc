@@ -37,7 +37,7 @@ export default class App extends Vue {
 		return (this.active = !this.active);
 	}
 
-	toggleTheme(val: boolean) {
+	toggleTheme(val) {
 		if (val) {
 			document.body.setAttribute('data-nn-theme', 'light');
 		} else {
