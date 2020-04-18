@@ -18,7 +18,7 @@
 		router-view
 	router-view(v-else)
 </template>
-<script lang="ts">
+<script>
 import { Vue, Component } from 'vue-property-decorator';
 import Sun from '@/assets/icon/sun.svg';
 import Moon from '@/assets/icon/moon.svg';
