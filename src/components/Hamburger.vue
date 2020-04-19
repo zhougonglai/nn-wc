@@ -15,14 +15,13 @@ export default {
   flex-direction: column
   flex-wrap: wrap
   justify-content: space-between
-  height: 2.5rem
-  width: 2.5rem
+  width: 32px
   cursor: pointer
   .bar
-    height 5px
+    height 2px
     background var(--nn-FG)
-    border-radius: 5px
-    margin: 3px 0px
+    border-radius: 2px
+    margin: 4.6px 0px
     transform-origin: left
     transition: all 0.5s
   &[active]

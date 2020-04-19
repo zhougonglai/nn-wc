@@ -44,6 +44,14 @@ export default class App extends Vue {
 			document.body.setAttribute('data-nn-theme', 'dark');
 		}
 	}
+
+	created() {
+		this.switcher = new Date().getHours() <= 18 && new Date().getHours() >= 9;
+		document.body.setAttribute(
+			'data-nn-theme',
+			this.switcher ? 'light' : 'dark',
+		);
+	}
 }
 </script>
 <style lang="stylus" scoped>
@@ -58,7 +66,7 @@ export default class App extends Vue {
 		align-items center
 		justify-content space-between
 		z-index 99
-		box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
+		// box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
 		backdrop-filter blur(5px)
 		.draw
 			height 100%
