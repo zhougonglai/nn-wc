@@ -98,7 +98,6 @@ export default class Button extends Vue {
 	span
 		position absolute
 		background var(--nn-FG-2)
-		// transform-origin center
 		transform translate(-50%, -50%)
 		pointer-events none
 		border-radius 50%
