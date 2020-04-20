@@ -1,4 +1,13 @@
-const isDev = () => process.env.NODE_ENV === 'production';
+const SizePlugin = require('size-plugin');
+
+const isDev = () => process.env.NODE_ENV !== 'production';
+
+const plugins = [];
+
+if (!isDev()) {
+	const bundlesize = new SizePlugin();
+	plugins.push(bundlesize);
+}
 
 module.exports = {
 	devServer: {
@@ -8,6 +17,7 @@ module.exports = {
 		output: {
 			libraryExport: 'default',
 		},
+		plugins,
 	},
 	css: { extract: !isDev() },
 	chainWebpack: config => {

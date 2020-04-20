@@ -51,6 +51,7 @@ export default class Button extends Vue {
 }
 </script>
 <style lang="stylus">
+
 @keyframes animate
 	from
 		width 0
@@ -64,12 +65,12 @@ export default class Button extends Vue {
 .nn-btn
 	position relative
 	outline 0
-	line-height 32px
+	line-height 40px
 	font-size large
-	min-width 120px
+	min-width 200px
 	border-radius 4px
-	padding-left 8px
-	padding-right 8px
+	padding-left 20px
+	padding-right 20px
 	overflow hidden
 	text-direction none
 	letter-spacing 2px
@@ -102,8 +103,10 @@ export default class Button extends Vue {
 	&.danger:not(.nn-btn-primary)
 		color var(--nn-RED)
 		border-color var(--nn-RED)
+
 	&.rounded
-		border-radius 16px
+		border-radius 20px
+
 	&.pressed
 		box-shadow 0 2px 4px var(--nn-FG-2)
 		&:hover
