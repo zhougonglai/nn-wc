@@ -9,8 +9,13 @@ button.nn-btn(
 			'pressed': pressed
 		}
 	]`
+	:disabled="disabled"
 	@click="btnClick")
-	slot
+	slot(v-if="!loading")
+	span.loading(v-else)
+		span
+		span
+		span
 </template>
 
 <script lang="ts">
@@ -23,6 +28,7 @@ export default class Button extends Vue {
 	@Prop(Boolean) readonly rounded!: boolean;
 	@Prop(Boolean) readonly pressed!: boolean;
 	@Prop(Boolean) readonly loading!: boolean;
+	@Prop(Boolean) readonly disabled!: boolean;
 
 	@Ref('button') readonly button!: HTMLButtonElement;
 
@@ -84,6 +90,12 @@ export default class Button extends Vue {
 
 	&.disabled, &[disabled]
 		cursor not-allowed
+		background-color var(--nn-FG-2)
+		color var(--nn-BG-0)
+		border none
+		&:hover, &:active, &:focus
+			background-color var(--nn-FG-2)
+			color var(--nn-BG-0)
 		> *
 			pointer-events none
 
@@ -115,17 +127,31 @@ export default class Button extends Vue {
 	background-color var(--nn-BG-0)
 	border-color transparent
 	color var(--nn-FG-HALF)
-	&:hover, &:active, &:focus
+	&:not([disabled]):hover, &:not([disabled]):active, &:not([disabled]):focus
 		color var(--nn-FG-0)
 		border-color transparent
+	&[disabled]
+		background-color transparent
+		color var(--nn-FG-2)
+		&:hover
+			color var(--nn-FG-2)
+			background-color transparent
 
 .nn-btn-danger
 	border-color var(--nn-RED)
 	background-color var(--nn-RED)
 	&:hover, &:active, &:focus
-		border 1px solid var(--nn-RED)
+		border-color var(--nn-RED)
 		background-color var(--nn-BG-0)
 		color var(--nn-RED)
+
+.nn-btn-success
+	border-color var(--nn-BLUE)
+	background-color var(--nn-BLUE)
+	&:hover, &:active, &:focus
+		border 1px solid var(--nn-BLUE)
+		background-color var(--nn-BG-0)
+		color var(--nn-BLUE)
 
 .nn-btn-primary
 	background-color var(--nn-primary)

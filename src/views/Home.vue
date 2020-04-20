@@ -4,22 +4,26 @@
 		h2.title default
 		Button default
 	.box
-		h2.title primary
+		h2.title primary / success / danger
 		Button(type="primary") primary
-	.box
-		h2.title danger
+		Button(type="success") success
 		Button(type="danger") danger
 	.box
 		h2.title secondary
 		Button(type="secondary") secondary
 	.box
+		h2.title disabled
+		Button(disabled) disabled
+	.box
 		h2.title text
 		Button(type="text") text
+		Button(type="text" disabled) disabled
 	.box
 		h2.title rounded
-		Button(type="primary" rounded) rounded
-		Button(type="primary" rounded danger) rounded
-		Button(rounded danger) rounded
+		Button(rounded) default
+		Button(type="primary" rounded) primary
+		Button(type="secondary" rounded) secondary
+		Button(disabled rounded) disabled
 	.box
 		h2.title pressed
 		Button(type="primary" pressed) pressed
