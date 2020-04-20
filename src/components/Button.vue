@@ -5,7 +5,6 @@ button.nn-btn(
 		type ? 'nn-btn-' + type : '',
 		{
 			'loading': loading,
-			'danger': danger,
 			'rounded': rounded,
 			'pressed': pressed
 		}
@@ -30,11 +29,9 @@ export default class Button extends Vue {
 	private animating = false;
 
 	btnClick(e: PointerEvent) {
-		const x = e.clientX - (e.target as HTMLButtonElement).offsetLeft;
-		const y = e.clientY - (e.target as HTMLButtonElement).offsetTop;
 		const ripples = document.createElement('span');
-		ripples.style.left = x + 'px';
-		ripples.style.top = y + 'px';
+		ripples.style.left = e.offsetX + 'px';
+		ripples.style.top = e.offsetY + 'px';
 		this.button.appendChild(ripples);
 
 		setTimeout(() => {
@@ -90,10 +87,6 @@ export default class Button extends Vue {
 		> *
 			pointer-events none
 
-	&.danger:not(.nn-btn-primary)
-		color var(--nn-RED)
-		border-color var(--nn-RED)
-
 	&.rounded
 		border-radius 20px
 
@@ -105,31 +98,47 @@ export default class Button extends Vue {
 	span
 		position absolute
 		background var(--nn-FG-2)
+		// transform-origin center
 		transform translate(-50%, -50%)
 		pointer-events none
 		border-radius 50%
 		animation animate 1s linear infinite
 
+.nn-btn-secondary
+	background-color var(--nn-BG-0)
+	border-color var(--nn-FG-2)
+	color var(--nn-FG-0)
+	&:hover, &:active, &:focus
+		border-color var(--nn-FG-0)
+		color var(--nn-FG)
 
+.nn-btn-text
+	background-color var(--nn-BG-0)
+	border-color transparent
+	color var(--nn-FG-HALF)
+	&:hover, &:active, &:focus
+		color var(--nn-FG-0)
+		border-color transparent
+
+.nn-btn-danger
+	border-color var(--nn-RED)
+	background-color var(--nn-RED)
+	&:hover, &:active, &:focus
+		border 1px solid var(--nn-RED)
+		background-color var(--nn-BG-0)
+		color var(--nn-RED)
 
 .nn-btn-primary
 	background-color var(--nn-primary)
 	color var(--nn-BG)
-	border 1px solid var(--nn-primary)
 	&:hover, &:active, &:focus
 		background-color var(--nn-BG-0)
 		color var(--nn-primary)
-		border 1px solid var(--nn-primary)
+		border-color var(--nn-primary)
 	&.pressed
 		box-shadow 0 2px 4px var(--nn-primary)
 		&:hover
 			box-shadow 0 4px 12px var(--nn-primary)
 	span
 		background var(--nn-FG-2)
-	&.danger
-		background-color var(--nn-RED)
-		&.pressed
-		box-shadow 0 2px 4px var(--nn-RED)
-			&:hover
-				box-shadow 0 4px 12px var(--nn-RED)
 </style>

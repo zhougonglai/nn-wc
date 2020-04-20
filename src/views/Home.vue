@@ -8,8 +8,13 @@
 		Button(type="primary") primary
 	.box
 		h2.title danger
-		Button(danger) danger
-		Button(type="primary" danger) danger
+		Button(type="danger") danger
+	.box
+		h2.title secondary
+		Button(type="secondary") secondary
+	.box
+		h2.title text
+		Button(type="text") text
 	.box
 		h2.title rounded
 		Button(type="primary" rounded) rounded

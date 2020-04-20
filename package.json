@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "git@github.com:zhougonglai/nn-wc.git"
 	},
-	"homepage": "https://nn-wc-git-project.zhougonglai.now.sh/",
+	"homepage": "https://nn-wc.now.sh/",
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "npm run build:web",

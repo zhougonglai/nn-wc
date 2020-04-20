@@ -51,7 +51,7 @@ label.switch
   display inline-block
   width 40px
   height 20px
-  background-color var(--nn-FG-1)
+  background-color var(--nn-FG-2)
   border-radius 20px
   transition all .2s
   &::after
@@ -60,13 +60,13 @@ label.switch
     width 18px
     height 18px
     border-radius 18px
-    background-color white
+    background-color var(--nn-BG)
     top 1px
     left 1px
-    transition all .3s
+    transition all .2s ease-in-out
+    will-change transform, background-color
   &.checked
     &::after
-      background-color var(--nn-FG-0)
       transform translateX(20px)
 
 input[type="checkbox"]
