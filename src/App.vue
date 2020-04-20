@@ -46,7 +46,7 @@ export default class App extends Vue {
 	}
 
 	created() {
-		this.switcher = new Date().getHours() <= 18 && new Date().getHours() >= 9;
+		this.switcher = window.matchMedia('(prefers-color-scheme: light)').matches;
 		document.body.setAttribute(
 			'data-nn-theme',
 			this.switcher ? 'light' : 'dark',
