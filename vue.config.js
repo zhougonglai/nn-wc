@@ -10,17 +10,20 @@ if (!isDev()) {
 }
 
 module.exports = {
-	devServer: {
+    devServer: {
 		port: 3333,
 	},
-	configureWebpack: {
+
+    configureWebpack: {
 		output: {
 			libraryExport: 'default',
 		},
 		plugins,
 	},
-	css: { extract: !isDev() },
-	chainWebpack: config => {
+
+    css: { extract: !isDev() },
+
+    chainWebpack: config => {
 		const svgRule = config.module.rule('svg');
 
 		svgRule.uses.clear();
@@ -32,4 +35,13 @@ module.exports = {
 			.use('vue-svg-loader')
 			.loader('vue-svg-loader');
 	},
+
+    pwa: {
+      name: 'nn-ui',
+      themeColor: '#fadb14',
+      msTileColor: '#FFFFFF',
+      manifestOptions: {
+        background_color: '#FFFFFF'
+      }
+    }
 };

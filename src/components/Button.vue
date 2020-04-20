@@ -75,25 +75,15 @@ export default class Button extends Vue {
 	text-direction none
 	letter-spacing 2px
 	cursor pointer
-	background-color var(--nn-BG-0)
-	color var(--nn-FG-0)
-	border 1px solid var(--nn-FG-0)
-	transition all .325s linear
-
-	&::before
-		content ''
-		position absolute
-		left 0
-		right 0
-		top 0
-		bottom 0
-		background-color currentColor
-		border-radius: inherit;
-		opacity 0
-
+	background-color var(--nn-FG-0)
+	color var(--nn-BG-0)
+	border 1px solid var(--nn-BG-0)
+	transition all .2s linear
+	will-change background-color, border, color
 	&:hover, &:active, &:focus
-		&::before
-			opacity 0.2
+		background-color var(--nn-BG-0)
+		color var(--nn-FG-0)
+		border-color var(--nn-FG-0)
 
 	&.disabled, &[disabled]
 		cursor not-allowed
@@ -125,9 +115,11 @@ export default class Button extends Vue {
 .nn-btn-primary
 	background-color var(--nn-primary)
 	color var(--nn-BG)
-	border none
+	border 1px solid var(--nn-primary)
 	&:hover, &:active, &:focus
-		background-color var(--nn-primary-5)
+		background-color var(--nn-BG-0)
+		color var(--nn-primary)
+		border 1px solid var(--nn-primary)
 	&.pressed
 		box-shadow 0 2px 4px var(--nn-primary)
 		&:hover
