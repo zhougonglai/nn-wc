@@ -1,7 +1,15 @@
 <template lang="pug">
 button.nn-btn(
 	ref="button"
-	:class="[type ? 'nn-btn-' + type : '',{'loading': loading}]"
+	:class=`[
+		type ? 'nn-btn-' + type : '',
+		{
+			'loading': loading,
+			'danger': danger,
+			'rounded': rounded,
+			'pressed': pressed
+		}
+	]`
 	@click="btnClick")
 	slot
 </template>
@@ -12,6 +20,9 @@ import { Component, Vue, Ref, Prop } from 'vue-property-decorator';
 @Component
 export default class Button extends Vue {
 	@Prop(String) readonly type!: string;
+	@Prop(Boolean) readonly danger!: boolean;
+	@Prop(Boolean) readonly rounded!: boolean;
+	@Prop(Boolean) readonly pressed!: boolean;
 	@Prop(Boolean) readonly loading!: boolean;
 
 	@Ref('button') readonly button!: HTMLButtonElement;
@@ -66,6 +77,7 @@ export default class Button extends Vue {
 	background-color var(--nn-BG-0)
 	color var(--nn-FG-0)
 	border 1px solid var(--nn-FG-0)
+	transition all .325s linear
 
 	&::before
 		content ''
@@ -87,6 +99,16 @@ export default class Button extends Vue {
 		> *
 			pointer-events none
 
+	&.danger:not(.nn-btn-primary)
+		color var(--nn-RED)
+		border-color var(--nn-RED)
+	&.rounded
+		border-radius 16px
+	&.pressed
+		box-shadow 0 2px 4px var(--nn-FG-2)
+		&:hover
+			box-shadow 0 4px 12px var(--nn-FG-2)
+
 	span
 		position absolute
 		background var(--nn-FG-2)
@@ -103,34 +125,16 @@ export default class Button extends Vue {
 	border none
 	&:hover, &:active, &:focus
 		background-color var(--nn-primary-5)
+	&.pressed
+		box-shadow 0 2px 4px var(--nn-primary)
+		&:hover
+			box-shadow 0 4px 12px var(--nn-primary)
 	span
 		background var(--nn-FG-2)
-
-.nn-btn-success
-	background-color var(--nn-GREEN)
-	color var(--nn-BG)
-	border none
-	span
-		background var(--nn-FG-2)
-
-.nn-btn-info
-	background-color var(--nn-BLUE)
-	color var(--nn-BG)
-	border none
-	span
-		background var(--nn-FG-2)
-
-.nn-btn-warning
-	background-color var(--nn-ORANGE)
-	color var(--nn-BG)
-	border none
-	span
-		background var(--nn-FG-2)
-
-.nn-btn-danger
-	background-color var(--nn-RED)
-	color var(--nn-BG)
-	border none
-	span
-		background var(--nn-FG-2)
+	&.danger
+		background-color var(--nn-RED)
+		&.pressed
+		box-shadow 0 2px 4px var(--nn-RED)
+			&:hover
+				box-shadow 0 4px 12px var(--nn-RED)
 </style>

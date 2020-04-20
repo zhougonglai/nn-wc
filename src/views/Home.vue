@@ -1,11 +1,11 @@
 <template lang="pug">
 #home
-	Button default
+	Button(pressed) default
 	Button(type="primary") primary
-	Button(type="success") success
-	Button(type="info") info
-	Button(type="warning") warning
-	Button(type="danger") danger
+	Button(danger) danger
+	Button(type="primary" danger) danger
+	Button(type="primary" rounded) rounded
+	Button(type="primary" pressed) pressed
 </template>
 
 <script>
