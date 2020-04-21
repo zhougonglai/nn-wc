@@ -6,6 +6,7 @@ button.nn-btn(
 		{
 			'loading': loading,
 			'rounded': rounded,
+			'square': square,
 			'pressed': pressed
 		}
 	]`
@@ -26,6 +27,7 @@ export default class Button extends Vue {
 	@Prop(String) readonly type!: string;
 	@Prop(Boolean) readonly danger!: boolean;
 	@Prop(Boolean) readonly rounded!: boolean;
+	@Prop(Boolean) readonly square!: boolean;
 	@Prop(Boolean) readonly pressed!: boolean;
 	@Prop(Boolean) readonly loading!: boolean;
 	@Prop(Boolean) readonly disabled!: boolean;
@@ -104,6 +106,10 @@ export default class Button extends Vue {
 
 	&.rounded
 		border-radius 20px
+
+	&.square
+		border-radius 0
+
 
 	&.pressed
 		box-shadow 0 0 3px 2px var(--nn-FG-2)

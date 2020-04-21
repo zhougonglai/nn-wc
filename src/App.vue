@@ -66,7 +66,8 @@ export default class App extends Vue {
 		align-items center
 		justify-content space-between
 		z-index 99
-		// box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
+		// border-bottom 1px solid var(--nn-FG-2)
+		box-shadow 0 2px 4px var(--nn-FG-2)
 		backdrop-filter blur(5px)
 		.draw
 			height 100%
@@ -104,6 +105,6 @@ export default class App extends Vue {
 							width 100%
 							background-color var(--nn-FG)
 							transition height 0.2s linear
-						&.router-link-exact-active::before
+						&.router-link-active::before
 							height 4px
 </style>

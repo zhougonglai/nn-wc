@@ -25,6 +25,12 @@
 		Button(type="secondary" rounded) secondary
 		Button(disabled rounded) disabled
 	.box
+		h2.title square
+		Button(square) default
+		Button(type="primary" square) primary
+		Button(type="secondary" square) secondary
+		Button(disabled square) disabled
+	.box
 		h2.title loading
 		Button(loading) loading
 	.box

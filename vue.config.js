@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/camelcase */
 const SizePlugin = require('size-plugin');
 
 const isDev = () => process.env.NODE_ENV !== 'production';
@@ -10,20 +12,18 @@ if (!isDev()) {
 }
 
 module.exports = {
-    devServer: {
-		port: 3333,
-	},
+	devServer: {},
 
-    configureWebpack: {
+	configureWebpack: {
 		output: {
 			libraryExport: 'default',
 		},
 		plugins,
 	},
 
-    css: { extract: !isDev() },
+	css: { extract: !isDev() },
 
-    chainWebpack: config => {
+	chainWebpack: config => {
 		const svgRule = config.module.rule('svg');
 
 		svgRule.uses.clear();
@@ -36,12 +36,14 @@ module.exports = {
 			.loader('vue-svg-loader');
 	},
 
-    pwa: {
-      name: 'nn-ui',
-      themeColor: '#fadb14',
-      msTileColor: '#FFFFFF',
-      manifestOptions: {
-        background_color: '#FFFFFF'
-      }
-    }
+	pwa: {
+		name: 'nn-ui',
+		themeColor: '#fadb14',
+		msTileColor: '#FFFFFF',
+		manifestOptions: {
+			name: '@zhougonglai/nn-ui',
+			short_name: 'nn-ui',
+			background_color: '#FFFFFF',
+		},
+	},
 };

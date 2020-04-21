@@ -18,6 +18,12 @@ const routes: Array<RouteConfig> = [
 				name: 'Home',
 				component: Home,
 			},
+			{
+				path: 'alert',
+				name: 'Alert',
+				component: () =>
+					import(/* webpackChunkName: 'page.Alert' */ '@/views/Alert.vue'),
+			},
 		],
 	},
 	{

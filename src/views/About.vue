@@ -10,9 +10,9 @@ article#about
 	p
 		| 结合种组件设计的亮点 --- 混种
 	p
-		| 组件开发采用Web Component(WC)规范.
-		| 使用shadow root.
-		| 不兼容IE.
+		| 业务程序员初次开源
+		| 易用性不强.
+		span.text-danger 不建议使用
 </template>
 <style lang="stylus" scoped>
 #about
@@ -25,4 +25,6 @@ article#about
 			font-size: 3rem;
 			font-weight: bold;
 			line-height: 1;
+		.text-danger
+			color var(--nn-RED)
 </style>
