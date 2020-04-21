@@ -38,6 +38,7 @@ export default class Button extends Vue {
 		const ripples = document.createElement('span');
 		ripples.style.left = e.offsetX + 'px';
 		ripples.style.top = e.offsetY + 'px';
+		ripples.classList.add('wave');
 		this.button.appendChild(ripples);
 
 		setTimeout(() => {
@@ -65,23 +66,34 @@ export default class Button extends Vue {
 		height 500px
 		opacity 0
 
+@keyframes blink
+	0%
+		opacity 0.2
+	20%
+		opacity 1
+	100%
+		opacity 0.2
+
 .nn-btn
 	position relative
 	outline 0
-	line-height 40px
+	height 40px
+	font-size 0.875rem
+	line-height 38px
 	font-size large
 	min-width 200px
 	border-radius 4px
-	padding-left 20px
-	padding-right 20px
+	padding 0 25px
 	overflow hidden
 	text-direction none
 	letter-spacing 2px
 	cursor pointer
+	-webkit-tap-highlight-color: transparent;
 	background-color var(--nn-FG-0)
 	color var(--nn-BG-0)
-	border 1px solid var(--nn-BG-0)
+	border 1px solid var(--nn-FG-0)
 	transition all .2s linear
+	box-sizing border-box
 	will-change background-color, border, color
 	&:hover, &:active, &:focus
 		background-color var(--nn-BG-0)
@@ -103,11 +115,36 @@ export default class Button extends Vue {
 		border-radius 20px
 
 	&.pressed
-		box-shadow 0 2px 4px var(--nn-FG-2)
+		box-shadow 0 0 3px 2px var(--nn-FG-2)
+		border-color var(--nn-FG-0)
 		&:hover
-			box-shadow 0 4px 12px var(--nn-FG-2)
+			box-shadow 0 0 4px 3px var(--nn-FG-2)
+			transform: translate3d(0px, -1px, 0px);
 
-	span
+	&.loading
+		background-color var(--nn-BG-0)
+		border-color var(--nn-FG-0)
+		display flex
+		justify-content center
+		pointer-events none
+		filter grayscale(1)
+		span.loading
+			display: inline-flex;
+			align-items: center;
+			height: auto;
+			span
+				width 4px
+				height 4px
+				border-radius 2px
+				background-color #999
+				margin 0 1px
+				animation blink 1.4s infinite both
+				&:nth-of-type(2)
+					animation-delay 0.2s
+				&:nth-of-type(3)
+					animation-delay 0.4s
+
+	span.wave
 		position absolute
 		background var(--nn-FG-2)
 		transform translate(-50%, -50%)
@@ -127,6 +164,7 @@ export default class Button extends Vue {
 	background-color var(--nn-BG-0)
 	border-color transparent
 	color var(--nn-FG-HALF)
+	box-shadow none
 	&:not([disabled]):hover, &:not([disabled]):active, &:not([disabled]):focus
 		color var(--nn-FG-0)
 		border-color transparent
@@ -144,6 +182,12 @@ export default class Button extends Vue {
 		border-color var(--nn-RED)
 		background-color var(--nn-BG-0)
 		color var(--nn-RED)
+	&.pressed
+		box-shadow 0 0 2px 1px var(--nn-RED)
+		border-color var(--nn-RED)
+		&:hover
+			box-shadow 0 0 3px 2px var(--nn-RED)
+			transform: translate3d(0px, -1px, 0px);
 
 .nn-btn-success
 	border-color var(--nn-BLUE)
@@ -156,14 +200,15 @@ export default class Button extends Vue {
 .nn-btn-primary
 	background-color var(--nn-primary)
 	color var(--nn-BG)
+	border-color var(--nn-primary)
 	&:hover, &:active, &:focus
 		background-color var(--nn-BG-0)
 		color var(--nn-primary)
 		border-color var(--nn-primary)
 	&.pressed
-		box-shadow 0 2px 4px var(--nn-primary)
+		box-shadow 0 0 2px 1px var(--nn-primary)
+		border-color var(--nn-primary)
 		&:hover
-			box-shadow 0 4px 12px var(--nn-primary)
-	span
-		background var(--nn-FG-2)
+			box-shadow 0 0 3px 2px var(--nn-primary)
+			transform: translate3d(0px, -1px, 0px);
 </style>

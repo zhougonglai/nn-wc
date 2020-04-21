@@ -25,8 +25,15 @@
 		Button(type="secondary" rounded) secondary
 		Button(disabled rounded) disabled
 	.box
+		h2.title loading
+		Button(loading) loading
+	.box
 		h2.title pressed
-		Button(type="primary" pressed) pressed
+		Button(pressed) default
+		Button(type="primary" pressed) primary
+		Button(type="danger" pressed) danger
+		Button(type="secondary" pressed) secondary
+		Button(loading pressed) loading
 </template>
 
 <script>
@@ -40,6 +47,7 @@ export default class Home extends Vue {}
 #home
 	display flex
 	flex-direction column
+	padding-bottom 10vh
 
 	.box
 		margin  10px
