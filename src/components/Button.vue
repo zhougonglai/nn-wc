@@ -32,8 +32,6 @@ export default class Button extends Vue {
 
 	@Ref('button') readonly button!: HTMLButtonElement;
 
-	private animating = false;
-
 	btnClick(e: PointerEvent) {
 		const ripples = document.createElement('span');
 		ripples.style.left = e.offsetX + 'px';
@@ -44,13 +42,6 @@ export default class Button extends Vue {
 		setTimeout(() => {
 			ripples.remove();
 		}, 1000);
-
-		if (!this.animating) {
-			this.animating = true;
-			setTimeout(() => {
-				this.animating = false;
-			});
-		}
 	}
 }
 </script>
