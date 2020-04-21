@@ -23,7 +23,7 @@ button.nn-btn(
 import { Component, Vue, Ref, Prop } from 'vue-property-decorator';
 
 @Component
-export default class Button extends Vue {
+export default class VnButton extends Vue {
 	@Prop(String) readonly type!: string;
 	@Prop(Boolean) readonly danger!: boolean;
 	@Prop(Boolean) readonly rounded!: boolean;

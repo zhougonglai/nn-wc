@@ -2,44 +2,44 @@
 #home
 	.box
 		h2.title default
-		Button default
+		VnButton default
 	.box
 		h2.title primary / success / danger
-		Button(type="primary") primary
-		Button(type="success") success
-		Button(type="danger") danger
+		VnButton(type="primary") primary
+		VnButton(type="success") success
+		VnButton(type="danger") danger
 	.box
 		h2.title secondary
-		Button(type="secondary") secondary
+		VnButton(type="secondary") secondary
 	.box
 		h2.title disabled
-		Button(disabled) disabled
+		VnButton(disabled) disabled
 	.box
 		h2.title text
-		Button(type="text") text
-		Button(type="text" disabled) disabled
+		VnButton(type="text") text
+		VnButton(type="text" disabled) disabled
 	.box
 		h2.title rounded
-		Button(rounded) default
-		Button(type="primary" rounded) primary
-		Button(type="secondary" rounded) secondary
-		Button(disabled rounded) disabled
+		VnButton(rounded) default
+		VnButton(type="primary" rounded) primary
+		VnButton(type="secondary" rounded) secondary
+		VnButton(disabled rounded) disabled
 	.box
 		h2.title square
-		Button(square) default
-		Button(type="primary" square) primary
-		Button(type="secondary" square) secondary
-		Button(disabled square) disabled
+		VnButton(square) default
+		VnButton(type="primary" square) primary
+		VnButton(type="secondary" square) secondary
+		VnButton(disabled square) disabled
 	.box
 		h2.title loading
-		Button(loading) loading
+		VnButton(loading) loading
 	.box
 		h2.title pressed
-		Button(pressed) default
-		Button(type="primary" pressed) primary
-		Button(type="danger" pressed) danger
-		Button(type="secondary" pressed) secondary
-		Button(loading pressed) loading
+		VnButton(pressed) default
+		VnButton(type="primary" pressed) primary
+		VnButton(type="danger" pressed) danger
+		VnButton(type="secondary" pressed) secondary
+		VnButton(loading pressed) loading
 </template>
 
 <script>
