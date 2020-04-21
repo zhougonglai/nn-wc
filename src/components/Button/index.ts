@@ -4,6 +4,7 @@ import { Component } from 'vue';
 
 export default {
 	install: function(Vue) {
+		console.log(Button.name);
 		Vue.component(Button.name, Button);
 	},
 } as PluginObject<Component>;
