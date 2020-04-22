@@ -1,33 +1,11 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '@/views/Home.vue';
-import Default from '@/layout/default.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
 	{
 		path: '/',
-		meta: {
-			keepAlive: true,
-		},
-		component: Default,
-		children: [
-			{
-				path: '',
-				name: 'Home',
-				component: Home,
-			},
-			{
-				path: 'alert',
-				name: 'Alert',
-				component: () =>
-					import(/* webpackChunkName: 'page.Alert' */ '@/views/Alert.vue'),
-			},
-		],
-	},
-	{
-		path: '/about',
 		meta: {
 			keepAlive: true,
 		},
@@ -39,6 +17,28 @@ const routes: Array<RouteConfig> = [
 				name: 'About',
 				component: () =>
 					import(/* webpackChunkName: "page.about" */ '@/views/About.vue'),
+			},
+		],
+	},
+	{
+		path: '/components',
+		meta: {
+			keepAlive: true,
+		},
+		component: () =>
+			import(/* webpackChunkName: "layout.default" */ '@/layout/default.vue'),
+		children: [
+			{
+				path: '',
+				name: 'Home',
+				component: () =>
+					import(/* webpackChunkName: 'page.Home' */ '@/views/Home.vue'),
+			},
+			{
+				path: 'alert',
+				name: 'Alert',
+				component: () =>
+					import(/* webpackChunkName: 'page.Alert' */ '@/views/Alert.vue'),
 			},
 		],
 	},

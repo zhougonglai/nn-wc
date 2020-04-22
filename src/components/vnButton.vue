@@ -113,10 +113,10 @@ export default class VnButton extends VnComponent {
 
 
 	&.pressed
-		box-shadow 0 0 3px 2px var(--nn-FG-2)
+		box-shadow 0 1px 3px 2px var(--nn-FG-2)
 		border-color var(--nn-FG-0)
 		&:hover
-			box-shadow 0 0 4px 3px var(--nn-FG-2)
+			box-shadow 0 2px 4px 3px var(--nn-FG-2)
 			transform: translate3d(0px, -1px, 0px);
 
 	&.loading
@@ -181,10 +181,8 @@ export default class VnButton extends VnComponent {
 		background-color var(--nn-BG-0)
 		color var(--nn-RED)
 	&.pressed
-		box-shadow 0 0 2px 1px var(--nn-RED)
 		border-color var(--nn-RED)
 		&:hover
-			box-shadow 0 0 3px 2px var(--nn-RED)
 			transform: translate3d(0px, -1px, 0px);
 
 .nn-btn-success
@@ -204,9 +202,7 @@ export default class VnButton extends VnComponent {
 		color var(--nn-primary)
 		border-color var(--nn-primary)
 	&.pressed
-		box-shadow 0 0 2px 1px var(--nn-primary)
 		border-color var(--nn-primary)
 		&:hover
-			box-shadow 0 0 3px 2px var(--nn-primary)
 			transform: translate3d(0px, -1px, 0px);
 </style>

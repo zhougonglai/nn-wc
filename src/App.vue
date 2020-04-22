@@ -7,9 +7,9 @@
 		nav
 			ul.sibling-fade
 				li
-					router-link(:to="{name: 'Home'}") 组件
+					router-link(:to="{name: 'About'}" exact) 关于
 				li
-					router-link(:to="{name: 'About'}") 关于
+					router-link(:to="{name: 'Home'}") 组件
 			.spacer.ml-3
 			Moon
 			VnSwitch.mx-1(v-model="switcher" @change="toggleTheme")
