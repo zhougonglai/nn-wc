@@ -10,10 +10,10 @@
 	"homepage": "https://nn-wc.now.sh/",
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "npm run build:web",
-		"build:web": "vue-cli-service build",
+		"build": "vue-cli-service build",
+		"build:web": "vue-cli-service build --modern",
 		"build:wc": "vue-cli-service build --modern --target wc-async --name nn 'src/components/*.vue'",
-		"build:ui": "vue-cli-service build --modern --target lib --name nn 'src/components.js'",
+		"build:ui": "vue-cli-service build --modern --target lib --name nn 'src/index.ts'",
 		"test:unit": "vue-cli-service test:unit",
 		"test:e2e": "vue-cli-service test:e2e",
 		"lint": "vue-cli-service lint"
@@ -38,8 +38,9 @@
 	},
 	"devDependencies": {
 		"@types/jest": "^24.0.19",
-		"@typescript-eslint/eslint-plugin": "^2.26.0",
-		"@typescript-eslint/parser": "^2.26.0",
+		"@types/lodash": "^4.14.150",
+		"@typescript-eslint/eslint-plugin": "^2.29.0",
+		"@typescript-eslint/parser": "^2.29.0",
 		"@vue/cli-plugin-babel": "~4.3.0",
 		"@vue/cli-plugin-e2e-cypress": "~4.3.0",
 		"@vue/cli-plugin-eslint": "~4.3.0",

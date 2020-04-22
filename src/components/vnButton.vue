@@ -20,10 +20,11 @@ button.nn-btn(
 </template>
 
 <script lang="ts">
-import { Component, Vue, Ref, Prop } from 'vue-property-decorator';
+import { Component, Ref, Prop } from 'vue-property-decorator';
+import VnComponent from '@/mixin/VnComponent';
 
 @Component
-export default class VnButton extends Vue {
+export default class VnButton extends VnComponent {
 	@Prop(String) readonly type!: string;
 	@Prop(Boolean) readonly danger!: boolean;
 	@Prop(Boolean) readonly rounded!: boolean;

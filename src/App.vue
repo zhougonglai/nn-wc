@@ -2,7 +2,7 @@
 #app
 	header#header
 		.draw
-			Hamburger.active(:active="active" @click="toggle")
+			VnHamburger.active(:active="active" @click="toggle")
 		.spacer
 		nav
 			ul.sibling-fade
@@ -12,8 +12,9 @@
 					router-link(:to="{name: 'About'}") 关于
 			.spacer.ml-3
 			Moon
-			Switcher.mx-1(v-model="switcher" @change="toggleTheme")
+			VnSwitch.mx-1(v-model="switcher" @change="toggleTheme")
 			Sun
+		.version(v-text="$root.VERSION")
 	keep-alive(v-if="$route.meta.keepAlive")
 		router-view
 	router-view(v-else)
@@ -69,6 +70,14 @@ export default class App extends Vue {
 		// border-bottom 1px solid var(--nn-FG-2)
 		box-shadow 0 2px 4px var(--nn-FG-2)
 		backdrop-filter blur(5px)
+		.version
+			position: absolute;
+			top: 0;
+			right: 0;
+			font-size: xx-small;
+			background-color: var(--nn-FG-2);
+			padding: 4px 8px;
+			border-radius: 0 0 0 8px;
 		.draw
 			height 100%
 			width 72px
