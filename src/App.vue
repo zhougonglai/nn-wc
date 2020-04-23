@@ -3,6 +3,7 @@
 	header#header
 		.draw
 			VnHamburger.active(:active="active" @click="toggle")
+			Logo.logo
 		.spacer
 		nav
 			ul.sibling-fade
@@ -23,11 +24,13 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Sun from '@/assets/icon/sun.svg';
 import Moon from '@/assets/icon/moon.svg';
+import Logo from '@/assets/icon/logo.svg';
 
 @Component({
 	components: {
 		Sun,
 		Moon,
+		Logo,
 	},
 })
 export default class App extends Vue {
@@ -46,12 +49,51 @@ export default class App extends Vue {
 		}
 	}
 
+	VN = {
+		media: {
+			XS: window.matchMedia('(max-width: 600px)').matches,
+			SM: window.matchMedia('(min-width: 601px) and (max-width: 960px)')
+				.matches,
+			MD: window.matchMedia('(min-width: 961px) and (max-width: 1264px)')
+				.matches,
+			LG: window.matchMedia('(min-width: 1265px) and (max-width: 1904px)')
+				.matches,
+			XL: window.matchMedia('(min-width: 1905px)').matches,
+		},
+		theme: 'system',
+		darkMode: window.matchMedia('(prefers-color-scheme: light)'),
+	};
+
+	createMediaMatch(query) {
+		return window.matchMedia(query).matches;
+	}
+
 	created() {
-		this.switcher = window.matchMedia('(prefers-color-scheme: light)').matches;
-		document.body.setAttribute(
-			'data-nn-theme',
-			this.switcher ? 'light' : 'dark',
-		);
+		const XS = window.matchMedia('(max-width: 599px)');
+		this.VN.media.XS = XS.matches;
+		XS.onchange = ({ matches }) => {
+			this.VN.media.XS = matches;
+		};
+		const SM = window.matchMedia('(min-width: 601px) and (max-width: 960px)');
+		this.VN.media.SM = SM.matches;
+		SM.onchange = ({ matches }) => {
+			this.VN.media.SM = matches;
+		};
+		const MD = window.matchMedia('(min-width: 961px) and (max-width: 1264px)');
+		this.VN.media.MD = MD.matches;
+		MD.onchange = ({ matches }) => {
+			this.VN.media.MD = matches;
+		};
+		const LG = window.matchMedia('(min-width: 1265px) and (max-width: 1904px)');
+		this.VN.media.LG = LG.matches;
+		LG.onchange = ({ matches }) => {
+			this.VN.media.LG = matches;
+		};
+		const XL = window.matchMedia('(min-width: 1905px)');
+		this.VN.media.XL = XL.matches;
+		XL.onchange = ({ matches }) => {
+			this.VN.media.XL = matches;
+		};
 	}
 }
 </script>
@@ -85,6 +127,9 @@ export default class App extends Vue {
 			align-items center
 			justify-content center
 			margin-left 24px
+			.logo
+				width 32px
+				height 32px
 		nav
 			height 100%
 			line-height 72px
