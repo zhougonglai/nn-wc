@@ -40,6 +40,20 @@ const routes: Array<RouteConfig> = [
 				component: () =>
 					import(/* webpackChunkName: 'page.Alert' */ '@/views/Alert.vue'),
 			},
+			{
+				path: 'checkbox',
+				name: 'Checkbox',
+				component: () =>
+					import(
+						/* webpackChunkName: 'page.Checkbox' */ '@/views/Checkbox.vue'
+					),
+			},
+			{
+				path: 'dialog',
+				name: 'Dialog',
+				component: () =>
+					import(/* webpackChunkName: 'page.Dialog' */ '@/views/Dialog.vue'),
+			},
 		],
 	},
 ];

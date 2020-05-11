@@ -7,10 +7,13 @@ button.nn-btn(
 			'loading': loading,
 			'rounded': rounded,
 			'square': square,
-			'pressed': pressed
+			'pressed': pressed,
+			'icon': icon
 		}
 	]`
 	:disabled="disabled"
+	v-bind="$attrs"
+  v-on="$listeners"
 	@click="btnClick")
 	slot(v-if="!loading")
 	span.loading(v-else)
@@ -32,6 +35,7 @@ export default class VnButton extends VnComponent {
 	@Prop(Boolean) readonly pressed!: boolean;
 	@Prop(Boolean) readonly loading!: boolean;
 	@Prop(Boolean) readonly disabled!: boolean;
+	@Prop(Boolean) readonly icon!: boolean;
 
 	@Ref('button') readonly button!: HTMLButtonElement;
 
@@ -49,7 +53,6 @@ export default class VnButton extends VnComponent {
 }
 </script>
 <style lang="stylus">
-
 @keyframes animate
 	from
 		width 0
@@ -104,6 +107,16 @@ export default class VnButton extends VnComponent {
 			color var(--nn-BG-0)
 		> *
 			pointer-events none
+
+	&.icon
+		width: 32px;
+		height: 32px;
+		min-width: 0;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
 
 	&.rounded
 		border-radius 20px

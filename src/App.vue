@@ -1,9 +1,10 @@
 <template lang="pug">
 #app
 	header#header
-		.draw
+		.draw(v-if="!VN.match.SM")
 			VnHamburger.active(:active="active" @click="toggle")
-			Logo.logo
+		.logo
+			Logo
 		.spacer
 		nav
 			ul.sibling-fade
@@ -35,7 +36,42 @@ import Logo from '@/assets/icon/logo.svg';
 })
 export default class App extends Vue {
 	active = false;
-	switcher = true;
+	switcher;
+
+	preset = {
+		matcheSize: {
+			XS: '600px',
+			SM: '980px',
+			MD: '1264px',
+			LG: '1440px',
+			XL: '1960px',
+		},
+		theme: 'system',
+	};
+
+	createMediaMatchs() {
+		for (const match in this.preset.matcheSize) {
+			const matcher = window.matchMedia(
+				`(min-width: ${this.preset.matcheSize[match]})`,
+			);
+			this.VN.match[match] = matcher.matches;
+			matcher.onchange = ({ matches }) => {
+				this.VN.match[match] = matches;
+			};
+		}
+	}
+
+	VN = {
+		match: {
+			XS: '',
+			SM: '',
+			MD: '',
+			LG: '',
+			XL: '',
+		},
+		theme: 'system',
+		darkMode: window.matchMedia('(prefers-color-scheme: light)').matches,
+	};
 
 	toggle() {
 		return (this.active = !this.active);
@@ -49,51 +85,9 @@ export default class App extends Vue {
 		}
 	}
 
-	VN = {
-		media: {
-			XS: window.matchMedia('(max-width: 600px)').matches,
-			SM: window.matchMedia('(min-width: 601px) and (max-width: 960px)')
-				.matches,
-			MD: window.matchMedia('(min-width: 961px) and (max-width: 1264px)')
-				.matches,
-			LG: window.matchMedia('(min-width: 1265px) and (max-width: 1904px)')
-				.matches,
-			XL: window.matchMedia('(min-width: 1905px)').matches,
-		},
-		theme: 'system',
-		darkMode: window.matchMedia('(prefers-color-scheme: light)'),
-	};
-
-	createMediaMatch(query) {
-		return window.matchMedia(query).matches;
-	}
-
 	created() {
-		const XS = window.matchMedia('(max-width: 599px)');
-		this.VN.media.XS = XS.matches;
-		XS.onchange = ({ matches }) => {
-			this.VN.media.XS = matches;
-		};
-		const SM = window.matchMedia('(min-width: 601px) and (max-width: 960px)');
-		this.VN.media.SM = SM.matches;
-		SM.onchange = ({ matches }) => {
-			this.VN.media.SM = matches;
-		};
-		const MD = window.matchMedia('(min-width: 961px) and (max-width: 1264px)');
-		this.VN.media.MD = MD.matches;
-		MD.onchange = ({ matches }) => {
-			this.VN.media.MD = matches;
-		};
-		const LG = window.matchMedia('(min-width: 1265px) and (max-width: 1904px)');
-		this.VN.media.LG = LG.matches;
-		LG.onchange = ({ matches }) => {
-			this.VN.media.LG = matches;
-		};
-		const XL = window.matchMedia('(min-width: 1905px)');
-		this.VN.media.XL = XL.matches;
-		XL.onchange = ({ matches }) => {
-			this.VN.media.XL = matches;
-		};
+		this.createMediaMatchs();
+		this.switcher = this.VN.darkMode;
 	}
 }
 </script>
@@ -108,7 +102,8 @@ export default class App extends Vue {
 		display flex
 		align-items center
 		justify-content space-between
-		z-index 99
+		z-index 9
+		padding 0 24px
 		// border-bottom 1px solid var(--nn-FG-2)
 		box-shadow 0 2px 4px var(--nn-FG-2)
 		backdrop-filter blur(5px)
@@ -126,14 +121,18 @@ export default class App extends Vue {
 			display flex
 			align-items center
 			justify-content center
-			margin-left 24px
-			.logo
-				width 32px
-				height 32px
+		.logo
+			width 72px
+			height 72px
+			display flex
+			align-items center
+			justify-content center
+			svg
+				width 45px
+				height 45px
 		nav
 			height 100%
 			line-height 72px
-			margin-right 24px
 			display flex
 			align-items center
 			justify-content space-between

@@ -36,6 +36,14 @@ export default class Default extends Vue {
 					label: 'Alert',
 					link: 'Alert',
 				},
+				{
+					label: 'Checkbox',
+					link: 'Checkbox',
+				},
+				{
+					label: 'Dialog',
+					link: 'Dialog',
+				},
 			],
 		},
 	];
