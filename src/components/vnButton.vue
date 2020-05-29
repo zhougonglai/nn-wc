@@ -137,6 +137,7 @@ export default class VnButton extends VnComponent {
 		border-color var(--nn-FG-0)
 		display flex
 		justify-content center
+		align-items center
 		pointer-events none
 		filter grayscale(1)
 		span.loading

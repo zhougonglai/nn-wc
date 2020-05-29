@@ -160,4 +160,10 @@ export default class App extends Vue {
 							transition height 0.2s linear
 						&.router-link-active::before
 							height 4px
+
+@media (max-width 980px) {
+	header#header{
+		padding 0
+	}
+}
 </style>
